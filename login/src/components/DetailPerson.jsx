@@ -3,20 +3,12 @@ import { useEffect, useState } from 'react';
 import '../App.css'
 
 const DetailPerson = () => {
-  const [personal, setPersonal] = useState({}); // Use an object instead of an array for a single item
+  const [personal, setPersonal] = useState([]);
 
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/posts/1")
       .then(res => {
-        // Check if response data is not empty
-        if (res.data) {
-          setPersonal(res.data);
-        } else {
-          console.error("Empty response received");
-        }
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
+        setPersonal(res.data)
       });
   }, []);
 
